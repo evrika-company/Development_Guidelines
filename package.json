@@ -1,0 +1,72 @@
+{
+  "name": "development_guidelines",
+  "version": "1.0.0",
+  "description": "Рекомендации , правила и соглашения по командной работе в Evrika",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evrika-company/Development_Guidelines.git"
+  },
+  "keywords": [
+    "evrika",
+    "guidelines"
+  ],
+  "author": "Evrika Company, German Shlyaiger",
+  "bugs": {
+    "url": "https://github.com/evrika-company/Development_Guidelines/issues"
+  },
+  "homepage": "https://github.com/evrika-company/Development_Guidelines#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.4",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.4",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.7.0",
+    "evrika_standarts": "^1.1.2",
+    "semantic-release": "^21.0.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "node_modules/evrika_standarts/src/commitizen_customize/index.js"
+    }
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ]
+        }
+      ]
+    ],
+    "git": {
+      "assets": [
+        "package.json",
+        "CHANGELOG.md"
+      ],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    },
+    "preset": "angular",
+    "ci": true,
+    "npmPublish": false,
+    "changelogFile": "CHANGELOG.md"
+  }
+}
